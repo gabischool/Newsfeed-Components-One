@@ -101,4 +101,50 @@ const data = [
     Refresh the page to see the new article.
   */
   
+    function articleMaker(title,date,content){
+
+      // greate element
+
+    const article=document.createElement('div')
+    const titleArticle=document.createElement('h2')
+    const articleDate=document.createElement('p')
+    const contentDate=document.createElement('p')
+
+    const expandButton=document.createElement('span')
+     
+    // connect element 
+
+    article.appendChild(titleArticle)
+    article.appendChild(articleDate)
+    article.appendChild(contentDate)
+    article.appendChild(expandButton)
+    
+    //add content 
+    const open='+'
+
+    titleArticle.textContent= title
+    articleDate.textContent= date
+    contentDate.textContent= content
+    expandButton.textContent= open
+    // add css style
+    article.classList.add("article")
+    articleDate.classList.add("date")
+    expandButton.classList.add("expandButton")
+    
+    expandButton.addEventListener("click", (event)=>{
+      article.classList.toggle("article-open")
+    })
+    //return the paranet
+    return article
+
+    }
+   
+
+ const articles=document.querySelector(".articles") 
+//add the html dom
+ data.map(function(item){
+   articles.appendChild(articleMaker(item.title, item.date, item.content))
+ })
+
+
 
