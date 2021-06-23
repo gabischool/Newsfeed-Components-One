@@ -101,4 +101,55 @@ const data = [
     Refresh the page to see the new article.
   */
   
+  function articleMaker(title, date, content){
+//step1: create element
+const article = document.createElement('div')
+  const header2 = document.createElement('h2')
+  const date = document.createElement('p')
+  //button
+  const btnopen = document.createElement("button")
+  const btnclose = document.createElement("button")
+  const content = document.createElement('span')
 
+  //step2: connect elements
+
+  article.appendChild(header2)
+
+  //article to btnexpand
+  article.appendChild(data);
+  article.appendChild(btnclose);
+  article.appendChild(content);
+
+ //step3: add content
+
+  const expand = "\u25bc"
+  const collapse = "\u25b2"
+
+  header2.textContent = title;
+  data.textContent = date;
+  content.textContent = content;
+  btnclose.textContent = expand
+
+
+ //step4: add classlist
+  article.classList.add("article")
+  data.classList.add("data")
+
+  btnclose.classList.add("expand")
+  content.classList.add("content")
+  
+//step5: add functionality using AddEventListener
+  btnclose.addEventListener("click", function(event){
+    btnclose.classList.toggle("expandButton")
+  })
+  return article
+  }
+
+const article = document.querySelector(".articles")
+
+data.map(function(item){
+  article.appendChild( articleMaker(item.title,item.data,item.content))
+})
+
+console.log(articleMaker)
+ 
