@@ -102,3 +102,14 @@ const data = [
   */
   
 
+    function articleMaker(title,date,content){      
+      const expandbutton=document.createElement('span')
+      articleMaker.appendChild(span) 
+      expandbutton.addEventListener("click",function(event){
+        console.log("button clicked ",event.target)
+    })
+    return articleMaker
+    expandbutton.ClassList.toggle ("expandButton")
+
+    
+  }
