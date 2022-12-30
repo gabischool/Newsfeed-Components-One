@@ -102,14 +102,46 @@ const data = [
   */
   
 
-    function articleMaker(title,date,content){      
-      const expandbutton=document.createElement('span')
-      articleMaker.appendChild(span) 
-      expandbutton.addEventListener("click",function(event){
-        console.log("button clicked ",event.target)
-    })
-    return articleMaker
-    expandbutton.ClassList.toggle ("expandButton")
+    function articleMaker(title , content, date) {
+      let MainArticle = document.createElement("div")
+      let titleArticle = document.createElement("h2")
+      let articleDate = document.createElement("p")
+      let articleContent = document.createElement("p")
+      let expandButton = document.createElement("span")
+
+      MainArticle.classList.add("article")
+      articleDate.classList.add("date")
+      expandButton.classList.add("expandButton")
+      
+
+      MainArticle.appendChild(titleArticle)
+      MainArticle.appendChild(articleDate)
+      MainArticle.appendChild(expandButton)
+      MainArticle.appendChild(articleContent)
+      
+      expandButton.addEventListener("click" , () => {
+        MainArticle.classList.toggle('article-open')
+
+      })
+
+      articleContent.textContent = content
+      articleDate.textContent = date
+      titleArticle.textContent =title
+                   
+       
+      expandButton.textContent = "expand"
+           
+  
+
+        return MainArticle
+        
+    }
+
+        let articles = document.querySelector(".articles")
+        data.forEach(data => {
+        articles.appendChild(articleMaker(data.title, data.content, data.date))
+
+      })
 
     
-  }
+  
